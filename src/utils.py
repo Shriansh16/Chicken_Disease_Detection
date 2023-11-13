@@ -9,6 +9,8 @@ import json
 from pathlib import Path
 import base64
 import joblib
+import tensorflow as tf
+import keras
 ##The primary use case for joblib is to provide a replacement for the pickle module when dealing with large NumPy arrays.
 ##It is particularly useful for efficiently saving and loading objects containing large numerical arrays
 
@@ -68,4 +70,6 @@ def encodeImageIntoBase64(croppedImagePath):
     '''
     with open(croppedImagePath, "rb") as f:
         return base64.b64encode(f.read())
+def load_model(path: Path) -> tf.keras.Model:
+        return tf.keras.models.load_model(path)
     
